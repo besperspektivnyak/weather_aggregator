@@ -1,5 +1,5 @@
-#Weather aggregator
-##About
+# Weather aggregator
+## About
 This service can give you information about the weather in any city for several last days. Information includes 
 - average
 - median
@@ -10,14 +10,14 @@ of such parameters as
 - temperature (°C)
 - humidity (%)
 - pressure (mb)
-##Installation
+## Installation
 Install all packages from requirements.txt.
 
 ``pip install -r requirements.txt``
 
 Get your own API key on [Visual Crossing](https://www.visualcrossing.com/). Then paste it in config.py instead of phrase 'Your api key'.
 
-##Using
+## Using
 The service receives GET requests 
 
 ``/weather?city=<city>&days=<n>``
