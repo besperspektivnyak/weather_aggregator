@@ -16,8 +16,9 @@ def get_weather():
     days = "".join(c for c in days if c.isdecimal())
     today = get_today_date()
     first_day = get_n_date(today, int(days))
+    last_day = get_n_date(today, 1)
     request_params = {"unitGroup": "metric", "key": get_api_key()}
-    response = requests.get(get_api_url() + city + '/' + str(first_day) + '/' + str(today), params=request_params)
+    response = requests.get(get_api_url() + city + '/' + str(first_day) + '/' + str(last_day), params=request_params)
     res_json = response.json()
     parameters = res_json['days']
     data = process_response_data(parameters)
