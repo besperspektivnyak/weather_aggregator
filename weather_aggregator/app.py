@@ -3,12 +3,11 @@ from flask import request
 import requests
 import json
 
-from weather_aggregator.weather_statistics import get_api_url, get_api_key, get_today_date, get_n_date, \
-    get_final_result, process_response_data, statistics
-weather_aggregator = Flask(__name__)
+from weather_aggregator.weather_statistics import *
+app = Flask(__name__)
 
 
-@weather_aggregator.route('/weather', methods=['GET'])
+@app.route('/weather', methods=['GET'])
 def get_weather():
     city = request.args.get('city')
     city = "".join(c for c in city if c.isalpha())
@@ -28,4 +27,4 @@ def get_weather():
 
 
 if __name__ == '__main__':
-    weather_aggregator.run()
+    app.run(host='0.0.0.0', port=int("5000"), debug=True)

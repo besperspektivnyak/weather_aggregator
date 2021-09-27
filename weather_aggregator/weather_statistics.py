@@ -13,10 +13,6 @@ def get_n_date(now_date: date, days: int) -> date:
     return now_date - timedelta(days)
 
 
-def days_to_seconds(num_days: int) -> int:
-    return num_days * 84000
-
-
 def get_api_url() -> str:
     return config['api_url']
 
