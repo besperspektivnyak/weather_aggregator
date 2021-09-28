@@ -29,3 +29,22 @@ To run app in terminal:
 ``> cd weather_aggregator``
 
 ``> flask run``
+
+## Docker
+To run app from docker file you can build docker image by command 
+
+``docker built -t weather '[full path to Dockerfile]'``
+
+or 
+
+you can pull image from Docker Hub
+
+``docker pull besperspektivnyak/weather``
+
+To build container 
+
+``docker run -p 8080:8080 --name weather 'besperspektivnyak/weather or weather'``
+
+the last argument is the name of your image, choose it based on the way you build image.
+
+The service launch on [http://localhost:8080/](http://localhost:8080/). 
