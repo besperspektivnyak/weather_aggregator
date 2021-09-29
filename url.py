@@ -1,0 +1,1 @@
+url = dict(api_url='https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/')

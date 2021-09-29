@@ -2,7 +2,7 @@ from datetime import date, timedelta
 from typing import List
 
 import numpy as np
-from config import config
+from url import url
 
 
 def get_today_date() -> date:
@@ -14,11 +14,7 @@ def get_n_date(now_date: date, days: int) -> date:
 
 
 def get_api_url() -> str:
-    return config['api_url']
-
-
-def get_api_key() -> str:
-    return config['api_key']
+    return url['api_url']
 
 
 def process_response_data(response: dict) -> dict:
