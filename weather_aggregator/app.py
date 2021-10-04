@@ -10,11 +10,6 @@ api_key = os.environ['API_KEY']
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello():
-    return "Hello World!"
-
-
 @app.route('/weather', methods=['GET'])
 def get_weather():
     city = request.args.get('city')
