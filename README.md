@@ -48,4 +48,3 @@ To build container
 the last argument is the name of your image, choose it based on the way you build image.
 
 The service launch on [http://localhost:8080/](http://localhost:8080/). 
-
