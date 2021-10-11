@@ -1,15 +1,28 @@
 pipeline {
     agent any
     environment {
-        DOCKER = credentials('my_docker')
+        DOCKERHUB_CREDENTIALS = credentials('my_docker')
     }
     stages {
-        stage('Docker push') {
-            steps {
-                docker build -t besperspektivnyak/weather .
-                docker login -u DOCKER_USR -p DOCKER_PSW
-                docker image push besperspektivnyak/weather
-            }
-        }
-    }
+
+        stage('Build') {
+
+			steps {
+				bat 'docker build -t besperspektivnyak/weather .'
+			}
+		}
+
+		stage('Login') {
+
+			steps {
+				bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				bat 'docker push besperspektivnyak/weather'
+			}
+		}
 }
