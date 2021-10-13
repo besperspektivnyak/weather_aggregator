@@ -24,28 +24,28 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t besperspektivnyak/weather .'
+				bat 'docker build -t besperspektivnyak/weather .'
 			}
 		}
 
 		stage('Login') {
 
 			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+				bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
 
 		stage('Push') {
 
 			steps {
-				sh 'docker push besperspektivnyak/weather'
+				bat 'docker push besperspektivnyak/weather'
 			}
 		}
 	}
 
 	post {
 		always {
-			sh 'docker logout'
+			bat 'docker logout'
 		}
 	}
 
