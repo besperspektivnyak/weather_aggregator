@@ -1,9 +1,15 @@
 pipeline {
     stages {
-        stage ('Checkout and push'){
+        stage ('Checkout'){
             steps {
-                node {
+                node ('Checkout') {
                     checkout scm
+                }
+            }
+        }
+        stage ('Push'){
+            steps {
+                node ('Push') {
 
                     docker.withRegistry('', 'my_docker') {
 
