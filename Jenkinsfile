@@ -5,15 +5,11 @@ pipeline {
     stages {
         stage ('Checkout'){
             steps {
-                node ('Checkout') {
                     checkout scm
-                }
             }
         }
         stage ('Push'){
             steps {
-                node ('Push') {
-
                     script {
                         docker.withRegistry('', 'my_docker') {
 
@@ -23,7 +19,7 @@ pipeline {
                             customImage.push()
                         }
                     }
-                }
+
             }
         }
     }
