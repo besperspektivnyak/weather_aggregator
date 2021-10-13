@@ -5,21 +5,20 @@ pipeline {
     stages {
         stage ('Checkout'){
             steps {
-                    checkout scm
+                checkout scm
             }
         }
         stage ('Push'){
             steps {
-                    script {
-                        docker.withRegistry('', 'my_docker') {
+                script {
+                    docker.withRegistry('', 'my_docker') {
 
-                            def customImage = docker.build("besperspektivnyak/weather")
+                        def customImage = docker.build("besperspektivnyak/weather")
 
                             /* Push the container to the custom Registry */
-                            customImage.push()
-                        }
+                        customImage.push()
                     }
-
+                }
             }
         }
     }
