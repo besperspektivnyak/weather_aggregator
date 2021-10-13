@@ -14,12 +14,14 @@ pipeline {
             steps {
                 node ('Push') {
 
-                    docker.withRegistry('', 'my_docker') {
+                    script {
+                        docker.withRegistry('', 'my_docker') {
 
-                    def customImage = docker.build("besperspektivnyak/weather")
+                            def customImage = docker.build("besperspektivnyak/weather")
 
-                    /* Push the container to the custom Registry */
-                    customImage.push()
+                            /* Push the container to the custom Registry */
+                            customImage.push()
+                        }
                     }
                 }
             }
