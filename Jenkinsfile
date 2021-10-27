@@ -14,9 +14,8 @@ pipeline {
                     docker.withRegistry('', 'my_docker') {
 
                         def customImage = docker.build("besperspektivnyak/weather")
-
                             /* Push the container to the custom Registry */
-                        customImage.push()
+                        customImage.push("${env.BUILD_NUMBER}")
                     }
                 }
             }
