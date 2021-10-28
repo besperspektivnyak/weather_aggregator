@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-deployment
+  labels:
+    app: weather-app
+    type: app1
+spec:
+  template:
+    metadata:
+      name: weather-pod
+      labels:
+        app: weather-app
+        type: app1
+    spec:
+        containers:
+          - name: weather-image
+            env:
+              - name: API_KEY
+                valueFrom:
+                  secretKeyRef:
+                    key: api.txt
+                    name: api-key
+            image: "besperspektivnyak/weather:latest"
+  replicas: 1
+  selector:
+    matchLabels:
+      type: app1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weather-service
+spec:
+  selector:
+    app: weather-app
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      targetPort: 3000
+      port: 80
+      nodePort: 30000
