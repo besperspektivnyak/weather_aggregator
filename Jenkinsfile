@@ -23,7 +23,7 @@ pipeline {
         }
         stage("Deploy to Kubernetes") {
             steps {
-                sshagent(['k8s-jenkins']) {
+                sshagent(credentials: ['kube_cred']) {
                     sh 'scp -r -o StrictHostKeyChecking=no deployment.yaml root@94.26.239.26:/root'
                     script{
                         try{
