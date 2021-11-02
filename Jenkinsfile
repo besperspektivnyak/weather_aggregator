@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     withKubeConfig([credentialsId: 'kube_config', serverUrl: 'https://192.168.0.2:6443']) {
-                        sh 'kubectl apply -f deployment.yaml'
+                        bat 'kubectl apply -f deployment.yaml'
                     }
                 }
             }
