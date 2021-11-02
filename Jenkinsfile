@@ -24,7 +24,7 @@ pipeline {
         stage("Deploy to Kubernetes") {
             steps {
                 script {
-                    withKubeConfig([credentialsId: 'kube_config', serverUrl: 'https://192.168.0.2:6443']) {
+                    withKubeConfig([credentialsId: 'kube_config', serverUrl: 'https://94.26.239.26:6443']) {
                         bat 'kubectl apply -f deployment.yaml'
                     }
                 }
