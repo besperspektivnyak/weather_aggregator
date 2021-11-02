@@ -22,17 +22,8 @@ pipeline {
             }
         }
         stage("Deploy to Kubernetes") {
-            steps {
-                sshagent(credentials: ['cred_kube']) {
-                    sh 'scp -r -o StrictHostKeyChecking=no deployment.yaml root@94.26.239.26:/root'
-                    script{
-                        try{
-                            sh 'ssh root@94.26.239.26 kubectl apply -f /root/deployment.yaml --kubeconfig=/root/.kube/config'
-                        }
-                        catch(error) {
-                        }
-                    }
-                }
+            withKubeConfig([credentialsId: 'kube_config', serverUrl: 'https://192.168.0.2:6443']) {
+                sh 'kubectl apply -f deployment.yaml'
             }
         }
     }
