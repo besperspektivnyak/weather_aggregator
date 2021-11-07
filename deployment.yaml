@@ -19,7 +19,7 @@ spec:
               - name: API_KEY
                 valueFrom:
                   secretKeyRef:
-                    key: api.txt
+                    key: api
                     name: api-key
             image: "besperspektivnyak/weather:latest"
   replicas: 1
