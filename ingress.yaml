@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-weather
+
+spec:
+  rules:
+    - host: weather.p1.do-school.ru
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: weather-app
+                port:
+                  number: 80
