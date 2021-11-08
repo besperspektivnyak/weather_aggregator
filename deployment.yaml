@@ -22,7 +22,7 @@ spec:
                     key: api
                     name: api-key
             image: "besperspektivnyak/weather:latest"
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       type: app1
@@ -35,7 +35,7 @@ metadata:
 spec:
   selector:
     app: weather-app
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
       targetPort: 3000
