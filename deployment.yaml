@@ -22,7 +22,7 @@ spec:
                     key: api
                     name: api-key
             image: "besperspektivnyak/weather:latest"
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       type: app1
