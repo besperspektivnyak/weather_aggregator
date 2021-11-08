@@ -35,7 +35,6 @@ pipeline {
     }
     post {
         always {
-            bat 'docker logout'
             CleanWs()
         }
     }
