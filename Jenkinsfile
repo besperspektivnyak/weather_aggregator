@@ -33,11 +33,11 @@ pipeline {
 
         }
     }
-    post {
-        always {
-            bat 'docker logout'
-            CleanWs()
-        }
-    }
+//     post {
+//         always {
+//             bat 'docker logout'
+//             CleanWs()
+//         }
+//     }
 }
 
