@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage ('Checkout'){
             steps {
+            CleanWs()
                 checkout scm
             }
         }
@@ -30,6 +31,12 @@ pipeline {
                 }
             }
 
+        }
+    }
+    post {
+        always {
+            bat 'docker logout'
+            CleanWs()
         }
     }
 }
