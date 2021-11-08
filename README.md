@@ -48,3 +48,12 @@ To build container
 the last argument is the name of your image, choose it based on the way you build image.
 
 The service launch on [http://localhost:5000/](http://localhost:5000/).
+
+## Jenkins
+
+You can install Jenkins for more convenient using. Tutorial for creating freestyle project situated in Jenkins Freestyle Project directory.
+Also you can use Jenkinsfile in root directory for Pipeline project in Jenkins.
+
+## Kubernetes
+
+This project run in Kubernetes. You can find Kubernetes installation tutorial in Kubernetes Installation directory.
