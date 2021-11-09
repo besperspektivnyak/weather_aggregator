@@ -27,6 +27,7 @@ pipeline {
                 script {
                     withKubeConfig([credentialsId: 'kube_config', serverUrl: 'https://94.26.239.26:6443']) {
                         bat 'kubectl apply -f deployment.yaml'
+                        bat 'kubectl apply -f ingress.yaml'
                     }
                 }
             }
