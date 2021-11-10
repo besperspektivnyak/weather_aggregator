@@ -26,6 +26,9 @@ pipeline {
             steps {
                 script {
                     withKubeConfig([credentialsId: 'kube_config', serverUrl: 'https://94.26.239.26:6443']) {
+                        bat 'kubectl delete deployment weather-deployment'
+                        bat 'kubectl delete service weather-service'
+                        bat 'kubectl delete ingree ingress-weather'
                         bat 'kubectl apply -f deployment.yaml'
                         bat 'kubectl apply -f ingress.yaml'
                     }
