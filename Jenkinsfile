@@ -26,8 +26,8 @@ pipeline {
             steps {
                 script {
                     withKubeConfig([credentialsId: 'kube_config', serverUrl: 'https://94.26.239.26:6443']) {
-                        bat 'kubectl patch -f deployment.yaml'
-                        bat 'kubectl patch -f ingress.yaml'
+                        bat 'kubectl replace -f deployment.yaml'
+                        bat 'kubectl replace -f ingress.yaml'
                     }
                 }
             }
