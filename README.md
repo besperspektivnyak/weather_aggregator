@@ -41,13 +41,13 @@ you can pull image from Docker Hub
 
 ``docker pull besperspektivnyak/weather``
 
-To build container 
+To build container
 
-``docker run -p 5000:5000 --name weather -e API_KEY=your_api_key 'besperspektivnyak/weather or weather'``
+``docker run -p 8080:8080 --name weather -e API_KEY=your_api_key 'besperspektivnyak/weather or weather'``
 
 the last argument is the name of your image, choose it based on the way you build image.
 
-The service launch on [http://localhost:5000/](http://localhost:5000/).
+The service launch on [http://localhost:8080/](http://localhost:8080/).
 
 ## Jenkins
 
