@@ -21,7 +21,7 @@ spec:
                   secretKeyRef:
                     key: api
                     name: api-key
-            image: "besperspektivnyak/weather:105"
+            image: "besperspektivnyak/weather:106"
   replicas: 2
   selector:
     matchLabels:
