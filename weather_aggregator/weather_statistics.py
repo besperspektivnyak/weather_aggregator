@@ -17,26 +17,49 @@ def get_api_url() -> str:
     return url['api_url']
 
 
+# def process_response_data(response: dict) -> dict:
+#     new_data: dict = {'temperature': [], 'humidity': [], 'pressure': []}
+#     for day in response:
+#         new_data['temperature'].append(day['temp'])
+#         new_data['humidity'].append(day['humidity'])
+#         new_data['pressure'].append(day['pressure'])
+#     return new_data
+
+
 def process_response_data(response: dict) -> dict:
     new_data: dict = {'temperature': [], 'humidity': [], 'pressure': []}
     for day in response:
-        new_data['temperature'].append(day['temp'])
-        new_data['humidity'].append(day['humidity'])
-        new_data['pressure'].append(day['pressure'])
+        new_data['temperature'].append(day['main']['temp'])
+        new_data['humidity'].append(day['main']['humidity'])
+        new_data['pressure'].append(day['main']['pressure'])
     return new_data
 
 
-def statistics(data: dict) -> List[dict]:
+def statistics(data: dict) -> List:
     weather_stats = list()
-    specifications: list = [dict(), dict(), dict()]
+    # specifications: list = [dict(), dict(), dict()]
     for key, value in data.items():
-        for spec in specifications:
-            spec['average'] = round(np.average(data[key]), 1)
-            spec['median'] = np.median(data[key])
-            spec['min'] = np.min(data[key])
-            spec['max'] = np.max(data[key])
+        spec = dict()
+        # for spec in specifications:
+        spec['average'] = float(round(np.average(data[key]), 1))
+        spec['median'] = float(np.median(data[key]))
+        spec['min'] = float(np.min(data[key]))
+        spec['max'] = float(np.max(data[key]))
         weather_stats.append(spec)
     return weather_stats
+
+
+# def statistics(data: dict) -> List[dict]:
+#     weather_stats = list()
+#     specifications: list = [dict(), dict(), dict()]
+#     for key, value in data.items():
+#         for spec in specifications:
+#             spec['average'] = round(np.average(data[key]), 1)
+#             spec['median'] = np.median(data[key])
+#             spec['min'] = np.min(data[key])
+#             spec['max'] = np.max(data[key])
+#         weather_stats.append(spec)
+#     return weather_stats
 
 
 def get_final_result(city: str, first_day: date, last_day: date, stats_data: list) -> dict:

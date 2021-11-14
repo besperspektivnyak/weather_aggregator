@@ -1,1 +1,2 @@
-url = dict(api_url='https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/')
+#url = dict(api_url='https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/')
+url = dict(api_url='http://api.openweathermap.org/data/2.5/forecast?q={city}&cnt={cnt}&units=metric&appid={appid}')

@@ -24,14 +24,18 @@ def get_weather():
     today = get_today_date()
     first_day = get_n_date(today, int(days))
     last_day = get_n_date(today, 1)
-    request_params = {"unitGroup": "metric", "key": api_key}
-    response = requests.get(get_api_url() + city + '/' + str(first_day) + '/' + str(last_day), params=request_params)
+    # request_params = {"unitGroup": "metric", "key": api_key}
+    url = get_api_url().format(city=city, cnt=days, appid=api_key)
+    response = requests.get(url)
+    if response.status_code != 200:
+        return {}
+    # response = requests.get(get_api_url() + city + '/' + str(first_day) + '/' + str(last_day), params=request_params)
     res_json = response.json()
-    parameters = res_json['days']
+    parameters = res_json['list']
     data = process_response_data(parameters)
     weather_statistics = statistics(data)
     final_result = get_final_result(city, first_day, today, weather_statistics)
-    return json.dumps(final_result, indent=2, separators=(',', ': '))
+    return json.dumps(dict(final_result), indent=2, separators=(',', ': '))
 
 
 if __name__ == '__main__':
