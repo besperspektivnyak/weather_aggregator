@@ -69,6 +69,7 @@ def get_final_result(city: str, first_day: date, last_day: date, stats_data: lis
     stats['city'] = city
     stats['from'] = str(first_day)
     stats['to'] = str(last_day)
+    stats['devOpsSchool'] = 'done'
     for name in stats_names:
         stats[name] = stats_data[counter]
         counter += 1
